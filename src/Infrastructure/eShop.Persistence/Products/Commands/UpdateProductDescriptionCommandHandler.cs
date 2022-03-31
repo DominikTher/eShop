@@ -19,12 +19,12 @@ public sealed class UpdateProductDescriptionCommandHandler : IUpdateProductDescr
         this.mapper = mapper;
     }
 
-    public async Task<Product> Execute(UpdateProductDescriptionCommand updateProductDescriptionCommand, CancellationToken cancellationToken)
+    public async Task<Product?> Execute(UpdateProductDescriptionCommand updateProductDescriptionCommand, CancellationToken cancellationToken)
     {
         await using var dbContext = dbContextFactory.CreateDbContext();
         var product = await dbContext.Products.FindAsync(new object[] { updateProductDescriptionCommand.ProductId }, cancellationToken);
 
-        if (product is null) throw new Exception();
+        if (product is null) return null;
 
         var updatedProduct = product with { Description = updateProductDescriptionCommand.ProductDescription };
         dbContext.Products.Attach(updatedProduct);
