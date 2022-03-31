@@ -22,7 +22,7 @@ public sealed class GetProductByIdQueryHandler : IGetProductByIdQueryHandler
     public async Task<Product> Execute(int id, CancellationToken cancellationToken)
     {
         await using var dbContext = dbContextFactory.CreateDbContext();
-        var product = await dbContext.Products.FindAsync(new object[] { id }, cancellationToken: cancellationToken);
+        var product = await dbContext.Products.FindAsync(new object[] { id }, cancellationToken);
 
         return mapper.Map<Product>(product);
     }

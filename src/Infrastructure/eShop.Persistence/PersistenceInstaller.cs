@@ -1,7 +1,9 @@
-﻿using eShop.Application.Contracts.Persistence.Products.Queries;
+﻿using eShop.Application.Contracts.Persistence.Products.Commands;
+using eShop.Application.Contracts.Persistence.Products.Queries;
 using eShop.Application.Contracts.Persistence.Queries;
 using eShop.Application.Core;
 using eShop.Persistence.DataAccess;
+using eShop.Persistence.Products.Commands;
 using eShop.Persistence.Products.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,7 @@ public static class PersistenceInstaller
         });
         serviceCollection.AddScoped<IGetAllProductsQueryHandler, GetAllProductsQueryHandler>();
         serviceCollection.AddScoped<IGetProductByIdQueryHandler, GetProductByIdQueryHandler>();
+        serviceCollection.AddScoped<IUpdateProductDescriptionCommandHandler, UpdateProductDescriptionCommandHandler>();
 
         return serviceCollection;
     }

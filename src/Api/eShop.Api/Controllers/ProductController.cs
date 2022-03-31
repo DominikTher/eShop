@@ -1,7 +1,6 @@
 ﻿using eShop.Application.Features.Products;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace eShop.Api.Controllers;
 
@@ -33,8 +32,10 @@ public sealed class ProductController : ControllerBase
     }
 
     [HttpPatch]
-    public ActionResult<ProductOutput> UpdateProductDescription(CancellationToken cancellationToken)
+    public async Task<ActionResult<ProductOutput>> UpdateProductDescription(ProductDescriptionUpdateRequest productDescriptionUpdateRequest, CancellationToken cancellationToken)
     {
-        return Ok();
+        var product = await mediator.Send(productDescriptionUpdateRequest, cancellationToken);
+
+        return Ok(product);
     }
 }
