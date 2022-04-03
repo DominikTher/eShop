@@ -1,4 +1,5 @@
-﻿using eShop.Api.Controllers;
+﻿using AutoMapper;
+using eShop.Api.Controllers;
 using eShop.Application.Features.Products;
 using FluentAssertions;
 using MediatR;
@@ -21,7 +22,7 @@ public class ProductControllerTests
     public void SetUp()
     {
         mediator = Substitute.For<IMediator>();
-        sut = new ProductController(mediator);
+        sut = new ProductController(mediator, Substitute.For<IMapper>());
     }
 
     [Test]

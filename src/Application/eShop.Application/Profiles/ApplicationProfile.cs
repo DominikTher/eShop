@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eShop.Application.Contracts.Persistence.Products.Commands;
+using eShop.Application.Contracts.Persistence.Products.Queries;
 using eShop.Application.Core;
 using eShop.Application.Features.Products;
 
@@ -11,5 +12,6 @@ public class ApplicationProfile : Profile
     {
         CreateMap<Product, ProductOutput>();
         CreateMap<ProductDescriptionUpdateRequest, UpdateProductDescriptionCommand>();
+        CreateMap<ProductsPagedRequest, GetPagedProductsQuery>();
     }
 }

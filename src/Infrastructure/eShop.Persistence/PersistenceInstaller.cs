@@ -24,6 +24,8 @@ public static class PersistenceInstaller
         serviceCollection.AddScoped<IGetAllProductsQueryHandler, GetAllProductsQueryHandler>();
         serviceCollection.AddScoped<IGetProductByIdQueryHandler, GetProductByIdQueryHandler>();
         serviceCollection.AddScoped<IUpdateProductDescriptionCommandHandler, UpdateProductDescriptionCommandHandler>();
+        serviceCollection.AddScoped<IGetPagedProductsQueryHandler, GetPagedProductsQueryHandler>();
+        serviceCollection.AddScoped<IGetProductsCountQueryHandler, GetProductsCountQueryHandler>();
 
         return serviceCollection;
     }
